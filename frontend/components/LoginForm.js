@@ -1,85 +1,131 @@
 import React from 'react'
-import Link from 'next/link'
+
+import FormInput from './FormInput'
+import NormalButton from './NormalButton';
+import SubmitButton from './SubmitButton';
+
+
 
 class LoginForm extends React.Component {
+
+  constructor(props){
+    super(props);
+    
+  }
+
+  message = ""
+  
+
+
+  state = {
+    form: {
+      email: '',
+      password: '',
+    }
+  }
+
+  handleChange = e =>{
+    this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name] : e.target.value
+      }
+    })
+  }
+
+  handleSubmit = async e =>{
+    e.preventDefault();
+    try {
+      let config = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state.form)
+      }
+
+      
+
+      let response = await fetch('http://localhost:8080/authenticate', config)
+      let json = await response.json();
+      if (json.flag == true){
+        this.message = "";
+        let a = document.getElementById("errorMessage")
+        a.innerHTML = this.message;
+        
+        location.href = "/home/"+ json.nickname;
+      }else{
+        this.message = "Please verify your credentials";
+        
+        let a = document.getElementById("errorMessage")
+        a.innerHTML = this.message;
+      }
+      console.log(json);
+      console.log(this.message);
+    } catch (error) {
+      
+    }
+  }
 
     email = React.createRef();
     password = React.createRef();
 
-    handleChange = event => {
-
+    complete(){
+      console.log("funciona");
     }
 
-    handleSubmit = event => {
-        fetch('http://localhost:8080/',)
-            .then(function (response) {
-                if (response.status >= 400) {
-                    throw new Error("Bad response from server");
-                }
-                prompt(response);
-            })
-            .then(function (stories) {
-                console.log(stories);
-            });
-    }
+    
+
+    
 
     render() {
         return (
             <div>
-                <div className="card shadow w-50 m-auto p-3">
-
-                    <h1 className="py-1 text-center">Sign in</h1>
-
-                    <span className={this.props.style} >
-
-                        {this.props.message}
-
-                    </span>
-
-                    <form className="w-50 mx-auto p-2" method="POST" action="http://localhost:8080/authenticate" >
-
-                        <div className="form-group">
-
-                            <label htmlFor="email">Email:</label><br />
-
-                            <input onChange={this.handleChange} type="email" id="email" name="email" className="form-control" placeholder="Email" required /><br />
-
-                            <label htmlFor="password">Password:</label><br />
-
-                            <input onChange={this.handleChange} type="password" id="password" className="form-control" name="password" placeholder="Password" required /><br />
-
-                            <input type="submit" className="btn btn-primary m-auto " value="Login" />
-
-                        </div>
-
-                    </form>
-
+                 <div  className="modal fade" id="modalLogin" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content modalStyle">
+            <div className="modal-header">
+              <img src="img/logo.png" width={50} height={50} />
+              <h5 className="modal-title" id="exampleModalLabel">Login</h5>
+              <button type="button" className="btn-close btn-close-white" data-dismiss="modal" aria-label="Close" />
+            </div>
+            <form onSubmit = {this.handleSubmit} onChange = {this.handleChange} >
+            <div className="modal-body">
+              <div className="m-3">
+                Email<br />
+              <FormInput type = "text" hint = "E-mail"  name = "email" value = {this.state.email} onChange = {this.handleChange}   />
+               
+              </div>
+              <div className="m-3">
+                Password<br />
+                <FormInput type = "password" hint = "Password"  name = "password" value = {this.state.password} onChange = {this.handleChange} /> 
+               
+              </div>
+            </div>
+            <div className="modal-footer flex-column">
+              {/*<button type="button" class="btn btn-secondary btn-greyNormalState" data-dismiss="modal">Close</button>*/}
+              <span class = "text-danger text-center" id = "errorMessage"> <b>{this.message}</b> </span>
+              <div>
+              
+                <SubmitButton  layout = "2" id = "loginBtn"> Login</SubmitButton>
+                
                 </div>
-
-                <br />
-
-                <h1 className="py-1 text-center">Sign up</h1>
-
-                <br />
-
-                <Link href="/register">
-
-                    <center><a className="btn btn-primary">Create new account</a></center>
-
-                </Link>
-
-                <br /><br />
-
+              <div>Dont have an account? <a href="#" data-toggle="modal" data-target="#modalSingUp" id="singUpLink"  data-dismiss = "modal"><u>Sign
+                    up</u></a></div>
+              <div><a><u>Forgot password</u></a></div>
+            </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>  
+    
             </div>
         );
     }
 }
 
-LoginForm.getInitalProps = async (ctx) => {
-    const res = await fetch("http://localhost://list");
-    const data = await res.json();
-    console.log(data);
-    return {};
-}
+
 
 export default LoginForm;

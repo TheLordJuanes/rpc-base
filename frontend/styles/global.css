@@ -1,27 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-        Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    line-height: 1.6;
-    font-size: 18px;
-}
 
-* {
-    box-sizing: border-box;
-}
-
-a {
-    color: #0070f3;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        
+                .body{
+                    font-family: 'Roboto', sans-serif;
+                }
+                
+                .bg-navbar{
+                    background-color: #001A33;
+                }
+                
+                .modalStyle{
+                    font-family: 'Roboto', sans-serif;
+                    background-color: #001A33;
+                    color:white;
+                }
+                
+                .btn-style{
+                    border-color: #FFFFFF;
+                    color: #FFFFFF;
+                    margin: 5px;
+                    border-radius: 10pt;
+                    width: 130px;
+                    height: 40px;
+                }
+                
+                .btn-style:hover{
+                    color: #FFA901;
+                    border-color: #FFA901;
+                }
+                
+                .btn-style2{
+                    background-color: #FFA901;
+                    border-color: #FFA901;
+                    color: #FFFFFF;
+                    margin: 5px;
+                    border-radius: 10pt;
+                    width: 130px;
+                    height: 40px;
+                }
+                
+                .btn-style2:hover{
+                    box-shadow: 2px 2px 2px 1px rgba(71, 71, 71, 0.2);
+                }
+                
+                .btn-style3{
+                    background-color: #8B8B8B;
+                    border-color: #8B8B8B;
+                    color: #FFFFFF;
+                    border-radius: 10pt;
+                }
+                
+                #loginBtn{
+                    width: 250px;
+                }

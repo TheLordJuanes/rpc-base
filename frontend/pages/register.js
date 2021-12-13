@@ -20,7 +20,7 @@ export default function Register() {
 
                 <title>RPC - Sign up</title>
 
-                <link rel="icon" href="/public/rpcLogo.ico" />
+                <link rel="icon" href="/logo.ico" />
 
             </Head>
 
