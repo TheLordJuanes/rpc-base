@@ -1,31 +1,31 @@
 import HeadRPC from '../components/HeadRPC'
 import LoginForm from '../components/LoginForm'
+import StyleRPC from '../components/StyleRPC'
+import I from '../components/Imports'
+import RegisterForm from '../components/RegisterForm'
+import Carousel from '../components/Carousel'
+import Navbar from '../components/Navbar'
+
 
 export default function Home() {
 
   return (
 
-    <div className="container">
+  
+      <div className="  m-auto ">
 
-      <HeadRPC />
+<HeadRPC/>
 
-      <LoginForm />
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
-
-    </div>
+  
+ 
+<Navbar/>
+    <Carousel/>
+    <LoginForm/>
+    <RegisterForm/>
+    <StyleRPC/>
+    <I/>
+    
+</div>
+   
   )
 }

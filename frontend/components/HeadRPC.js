@@ -1,34 +1,37 @@
 import React from 'react';
 import Head from 'next/head';
+import StyleRPC from '../components/StyleRPC'
+import Navbar from './Navbar';
 
 class HeadRPC extends React.Component {
+
+    
+  
 
     render() {
         return(
 
-            <div className="py-1 text-center">
-
-                <center><a href="https://redprogramacioncompetitiva.com/"><img src="https://pbs.twimg.com/profile_images/493847405670850561/qslkfHlq_400x400.jpeg" alt="RPC_Logo" width="100" height="100" /></a></center>
-
-                <h1 className="display-2">RPC :: Red de Programación Competitiva</h1>
-
-                <br />
-
+            <div>
+              
                 <Head>
+                
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
 
-                    <meta charSet="UTF-8" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-                    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="   crossorigin="anonymous"> </script>
 
-                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossOrigin="anonymous" />
 
-                    <title>RPC - Sign in</title>
-
-                    <link rel="icon" href="/logo.ico" />
+<link rel="icon" href="/logo.ico" />
 
                 </Head>
+                
+
+            
+  
+  <StyleRPC/>
+
 
             </div>
         )
